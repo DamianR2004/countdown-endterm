@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+<body>
+
+<p id="demo"></p>
+<img src="verdriet.png" id="countdown-img" alt="Countdown Image">
+
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("May 20, 2025 23:20:59").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  // Change the image based on remaining time
+  var img = document.getElementById("countdown-img");
+  if (img) {
+    if (distance <= 12 * 60 * 60 * 1000) { // 12 hours
+      img.src = "sssssad.png";
+    } else if (distance <= 24 * 60 * 60 * 1000) { // 1 day
+      img.src = "ssssad.png";
+    } else if (distance <= 3 * 24 * 60 * 60 * 1000) { // 3 days
+      img.src = "sssad.png";
+    } else if (distance <= 7 * 24 * 60 * 60 * 1000) { // 1 week
+      img.src = "supersupersad.png";
+    } else if (distance <= 10 * 24 * 60 * 60 * 1000) { // 10 days
+      img.src = "supersad.png";
+    } else if (distance <= 14 * 24 * 60 * 60 * 1000) { // 14 days
+      img.src = "verdriet.png";
+    } else if (distance <= 20 * 24 * 60 * 60 * 1000) { // 20 days
+      img.src = "blij.png";
+    } else {
+      img.src = "blij.png"; // Default image for more than 20 days
+    }
+  }
+
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+
+</body>
+</html>
